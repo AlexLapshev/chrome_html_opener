@@ -5,8 +5,8 @@ function openHtml(html) {
   chrome.tabs.create({ url: url });
 }
 
-inputField.addEventListener("paste", (e) => {
+inputField.addEventListener("input", (e) => {
   e.preventDefault();
-  const content = (e.originalEvent || e).clipboardData.getData('text/plain');
+  const content = inputField.value;
   openHtml(content)
 });
