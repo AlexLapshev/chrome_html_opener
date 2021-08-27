@@ -1,4 +1,4 @@
-#Chrome html opener
+# Chrome html opener
 
 Simple google chrome extension that opens a string as html in a new tab by pasting
 
