@@ -1,14 +1,12 @@
-let inputField = getInput()
-
-function getInput () {
-  return document.getElementById("paste-here");
-}
+let inputField = document.getElementById("html-input");
 
 function openHtml(html) {
   let url = "data:text/html," + encodeURIComponent(html);
-  chrome.tabs.create({url: url});
+  chrome.tabs.create({ url: url });
 }
 
-inputField.addEventListener("paste", async (event) => {
-  setTimeout(() => openHtml(getInput().value), 0.001);
+inputField.addEventListener("paste", (e) => {
+  e.preventDefault();
+  const content = (e.originalEvent || e).clipboardData.getData('text/plain');
+  openHtml(content)
 });
