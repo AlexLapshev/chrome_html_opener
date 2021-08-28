@@ -49,7 +49,6 @@ function prepareHtml(html) {
     html = new XMLSerializer().serializeToString(doc)
     html = html.replace(/onload/ig, 'notonload');
   }
-  alert(html)
   return html
 }
 
