@@ -32,9 +32,8 @@ toggle.addEventListener("click", async () => {
 });
 
 function prepareHtml(html) {
-  let doc = new DOMParser().parseFromString(html, "text/html")
-
   if (!jsEnabled) {
+    let doc = new DOMParser().parseFromString(html, "text/html")
     let scripts = doc.querySelectorAll("script"),
       searchString = "text/javascript",
       replaceString = "application/json"
@@ -47,8 +46,11 @@ function prepareHtml(html) {
       }
       script.outerHTML = scriptHtml
     })
+    html = new XMLSerializer().serializeToString(doc)
+    html = html.replace(/onload/ig, 'notonload');
   }
-  return new XMLSerializer().serializeToString(doc)
+  alert(html)
+  return html
 }
 
 function changeTitle() {
